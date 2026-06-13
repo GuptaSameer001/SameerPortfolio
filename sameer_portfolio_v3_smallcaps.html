@@ -1,0 +1,259 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#a78bfa;
+  --blue:#60a5fa;
+  --pink:#f472b6;
+  --glass:rgba(255,255,255,0.06);
+  --glass-border:rgba(255,255,255,0.10);
+}
+body{background:#050508;color:#e2e8f0;font-family:'Cinzel',serif;overflow-x:hidden}
+
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.15}
+.orb1{width:550px;height:550px;background:#6d28d9;top:-150px;left:-150px}
+.orb2{width:420px;height:420px;background:#1e3a8a;top:300px;right:-100px}
+.orb3{width:380px;height:380px;background:#9d174d;bottom:-50px;left:35%}
+
+nav{position:sticky;top:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(5,5,8,0.65);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo{font-size:16px;font-weight:700;letter-spacing:4px;background:linear-gradient(135deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif}
+.nav-pills{display:flex;gap:6px;flex-wrap:wrap}
+.nav-pill{
+  padding:7px 18px;border-radius:50px;font-size:11px;font-weight:600;cursor:pointer;border:none;letter-spacing:2px;
+  background:var(--glass);border:1px solid var(--glass-border);color:#94a3b8;
+  backdrop-filter:blur(12px);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);font-family:'Cinzel',serif
+}
+.nav-pill:hover{background:rgba(167,139,250,0.15);border-color:rgba(167,139,250,0.4);color:#a78bfa;transform:scale(1.05)}
+
+.hero{position:relative;z-index:1;text-align:center;padding:5rem 2rem 4rem}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;
+  background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.22);
+  font-size:10px;color:#a78bfa;letter-spacing:3px;margin-bottom:2rem;font-family:'Cinzel',serif}
+.dot-live{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.5)}50%{opacity:0.5;box-shadow:0 0 0 8px rgba(74,222,128,0)}}
+
+h1.name{font-size:56px;font-weight:700;line-height:1.1;letter-spacing:6px;color:#fff;margin-bottom:0.6rem;font-family:'Cinzel',serif}
+h1.name span{background:linear-gradient(135deg,#a78bfa 0%,#60a5fa 50%,#f472b6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tagline{font-size:11px;color:#475569;letter-spacing:5px;margin-bottom:1rem;font-family:'Cinzel',serif}
+.hero-desc{font-size:13px;color:#475569;max-width:460px;margin:0 auto 2.5rem;line-height:2;font-family:'Inter',sans-serif;letter-spacing:0.3px}
+
+.btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-glass{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;border-radius:50px;font-size:11px;font-weight:600;cursor:pointer;border:none;
+  backdrop-filter:blur(20px);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  letter-spacing:2px;position:relative;overflow:hidden;font-family:'Cinzel',serif
+}
+.btn-glass:hover{transform:scale(1.06) translateY(-3px)}
+.btn-glass:active{transform:scale(0.97)}
+.btn-p{
+  background:linear-gradient(135deg,rgba(109,40,217,0.85),rgba(30,58,138,0.85));
+  border:1px solid rgba(167,139,250,0.35);color:#e9d5ff;
+  box-shadow:0 8px 32px rgba(109,40,217,0.35),inset 0 1px 0 rgba(255,255,255,0.12)
+}
+.btn-s{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);color:#94a3b8;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.06)
+}
+
+section{position:relative;z-index:1;padding:2.5rem 2rem;max-width:880px;margin:0 auto}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent);margin:0.5rem auto;max-width:880px}
+.sec-label{font-size:9px;color:#7c3aed;letter-spacing:4px;margin-bottom:0.4rem;font-family:'Cinzel',serif}
+.sec-title{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:1.8rem;letter-spacing:4px;font-family:'Cinzel',serif}
+
+.about-glass{
+  background:var(--glass);backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);border-radius:22px;padding:2rem;
+  box-shadow:0 8px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05)
+}
+.about-glass p{font-size:13px;color:#64748b;line-height:2.1;font-family:'Inter',sans-serif;margin-bottom:1rem}
+.about-glass p:last-child{margin-bottom:0}
+.hl{color:#a78bfa;font-weight:600}
+
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px}
+.skill-bubble{
+  background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--glass-border);
+  border-radius:20px;padding:1.3rem 0.8rem;text-align:center;cursor:default;
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)
+}
+.skill-bubble:hover{transform:scale(1.08) translateY(-5px);border-color:rgba(167,139,250,0.45);background:rgba(109,40,217,0.12);box-shadow:0 16px 48px rgba(109,40,217,0.2)}
+.skill-bubble i{font-size:24px;color:#a78bfa;display:block;margin-bottom:8px}
+.skill-name{font-size:9px;color:#cbd5e1;font-weight:700;letter-spacing:2px;font-family:'Cinzel',serif}
+.skill-bar{width:65%;height:2px;background:rgba(255,255,255,0.07);border-radius:2px;margin:7px auto 0}
+.skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#60a5fa)}
+
+.projects-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.project-bubble{
+  background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--glass-border);
+  border-radius:22px;padding:1.5rem;position:relative;overflow:hidden;
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 4px 24px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.05)
+}
+.project-bubble::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.10),transparent)}
+.project-bubble:hover{transform:translateY(-7px) scale(1.01);border-color:rgba(167,139,250,0.35);box-shadow:0 24px 64px rgba(0,0,0,0.45),0 0 40px rgba(109,40,217,0.12)}
+.proj-icon{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,rgba(109,40,217,0.3),rgba(30,58,138,0.3));display:flex;align-items:center;justify-content:center;margin-bottom:1rem;border:1px solid rgba(167,139,250,0.18)}
+.proj-icon i{font-size:20px;color:#a78bfa}
+.proj-tag{font-size:8px;color:#475569;letter-spacing:3px;margin-bottom:0.4rem;font-family:'Cinzel',serif}
+.proj-title{font-size:13px;color:#f1f5f9;font-weight:700;margin-bottom:0.5rem;letter-spacing:2px;font-family:'Cinzel',serif}
+.proj-desc{font-size:11px;color:#475569;line-height:1.9;font-family:'Inter',sans-serif}
+.tech-stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem}
+.tech{font-size:9px;padding:3px 10px;border-radius:50px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.18);color:#a78bfa;letter-spacing:1px;font-family:'Cinzel',serif}
+
+.contact-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}
+.contact-bubble{
+  background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.2rem;display:flex;align-items:center;gap:12px;cursor:pointer;
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)
+}
+.contact-bubble:hover{transform:scale(1.04) translateY(-3px);border-color:rgba(167,139,250,0.35);background:rgba(109,40,217,0.10);box-shadow:0 12px 40px rgba(109,40,217,0.15)}
+.c-icon{width:38px;height:38px;min-width:38px;border-radius:12px;background:linear-gradient(135deg,rgba(109,40,217,0.25),rgba(30,58,138,0.25));display:flex;align-items:center;justify-content:center;border:1px solid rgba(167,139,250,0.18)}
+.c-icon i{font-size:17px;color:#a78bfa}
+.c-label{font-size:8px;color:#334155;letter-spacing:2px;font-family:'Cinzel',serif}
+.c-val{font-size:11px;color:#94a3b8;margin-top:3px;font-family:'Inter',sans-serif}
+
+footer{text-align:center;padding:2.5rem;font-size:9px;color:#1e293b;letter-spacing:4px;position:relative;z-index:1;font-family:'Cinzel',serif}
+</style>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<nav>
+  <div class="logo">⟨ ꜱᴀᴍᴇᴇʀ ⟩</div>
+  <div class="nav-pills">
+    <button class="nav-pill">ᴀʙᴏᴜᴛ</button>
+    <button class="nav-pill">ꜱᴋɪʟʟꜱ</button>
+    <button class="nav-pill">ᴘʀᴏᴊᴇᴄᴛꜱ</button>
+    <button class="nav-pill">ᴄᴏɴᴛᴀᴄᴛ</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge"><span class="dot-live"></span>ᴏᴘᴇɴ ᴛᴏ ᴏᴘᴘᴏʀᴛᴜɴɪᴛɪᴇꜱ</div>
+  <h1 class="name">ʜɪ, ɪ'ᴍ <span>ꜱᴀᴍᴇᴇʀ</span></h1>
+  <p class="tagline">ᴀɪ ᴅᴇᴠᴇʟᴏᴘᴇʀ · ꜱᴛᴜᴅᴇɴᴛ · ʙᴜɪʟᴅᴇʀ</p>
+  <p class="hero-desc">Class 12 student building the future with Python, LLMs & Generative AI. Turning ideas into intelligent systems — one model at a time.</p>
+  <div class="btn-group">
+    <button class="btn-glass btn-p"><i class="ti ti-sparkles" aria-hidden="true"></i>ᴠɪᴇᴡ ᴘʀᴏᴊᴇᴄᴛꜱ</button>
+    <button class="btn-glass btn-s"><i class="ti ti-send" aria-hidden="true"></i>ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ</button>
+    <button class="btn-glass btn-s"><i class="ti ti-download" aria-hidden="true"></i>ʀᴇꜱᴜᴍᴇ</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section>
+  <p class="sec-label">// 01</p>
+  <h2 class="sec-title">ᴀʙᴏᴜᴛ ᴍᴇ</h2>
+  <div class="about-glass">
+    <p>I'm a <span class="hl">ᴄʟᴀꜱꜱ 12 ꜱᴛᴜᴅᴇɴᴛ</span> from India with a deep passion for Artificial Intelligence. I started with <span class="hl">ᴘʏᴛʜᴏɴ</span> and quickly fell into the world of <span class="hl">ʟᴀʀɢᴇ ʟᴀɴɢᴜᴀɢᴇ ᴍᴏᴅᴇʟꜱ</span> and <span class="hl">ɢᴇɴᴇʀᴀᴛɪᴠᴇ ᴀɪ</span>.</p>
+    <p>I believe AI is not just a tool — it's a superpower. I build projects, explore new models, and push my limits every single day. The future is written in code, and I plan to write it.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p class="sec-label">// 02</p>
+  <h2 class="sec-title">ꜱᴋɪʟʟꜱ</h2>
+  <div class="skills-wrap">
+    <div class="skill-bubble">
+      <i class="ti ti-brand-python" aria-hidden="true"></i>
+      <div class="skill-name">ᴘʏᴛʜᴏɴ</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-bubble">
+      <i class="ti ti-brain" aria-hidden="true"></i>
+      <div class="skill-name">ʟʟᴍꜱ</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-bubble">
+      <i class="ti ti-sparkles" aria-hidden="true"></i>
+      <div class="skill-name">ɢᴇɴ ᴀɪ</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+    </div>
+    <div class="skill-bubble">
+      <i class="ti ti-message-chatbot" aria-hidden="true"></i>
+      <div class="skill-name">ᴘʀᴏᴍᴘᴛ ᴇɴɢ.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+    </div>
+    <div class="skill-bubble">
+      <i class="ti ti-robot" aria-hidden="true"></i>
+      <div class="skill-name">ᴀɪ ᴀᴘɪꜱ</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+    </div>
+    <div class="skill-bubble">
+      <i class="ti ti-git-branch" aria-hidden="true"></i>
+      <div class="skill-name">ɢɪᴛ</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p class="sec-label">// 03</p>
+  <h2 class="sec-title">ᴘʀᴏᴊᴇᴄᴛꜱ</h2>
+  <div class="projects-wrap">
+    <div class="project-bubble">
+      <div class="proj-icon"><i class="ti ti-message-chatbot" aria-hidden="true"></i></div>
+      <p class="proj-tag">ʟʟᴍ · ᴄʜᴀᴛʙᴏᴛ</p>
+      <p class="proj-title">ᴄᴜꜱᴛᴏᴍ ᴀɪ ᴀꜱꜱɪꜱᴛᴀɴᴛ</p>
+      <p class="proj-desc">Conversational AI built with Python and LLM APIs using advanced prompt engineering techniques.</p>
+      <div class="tech-stack">
+        <span class="tech">ᴘʏᴛʜᴏɴ</span><span class="tech">ʟʟᴍ</span><span class="tech">ᴀᴘɪ</span>
+      </div>
+    </div>
+    <div class="project-bubble">
+      <div class="proj-icon"><i class="ti ti-wand" aria-hidden="true"></i></div>
+      <p class="proj-tag">ɢᴇɴ ᴀɪ · ᴄᴏɴᴛᴇɴᴛ</p>
+      <p class="proj-title">ᴀɪ ᴄᴏɴᴛᴇɴᴛ ɢᴇɴᴇʀᴀᴛᴏʀ</p>
+      <p class="proj-desc">Generates creative text, summaries and ideas using generative AI models with custom fine-tuning.</p>
+      <div class="tech-stack">
+        <span class="tech">ɢᴇɴ ᴀɪ</span><span class="tech">ᴘʏᴛʜᴏɴ</span>
+      </div>
+    </div>
+    <div class="project-bubble">
+      <div class="proj-icon"><i class="ti ti-plus" aria-hidden="true"></i></div>
+      <p class="proj-tag">ᴄᴏᴍɪɴɢ ꜱᴏᴏɴ</p>
+      <p class="proj-title">ʏᴏᴜʀ ɴᴇxᴛ ᴘʀᴏᴊᴇᴄᴛ</p>
+      <p class="proj-desc">More exciting AI projects on the way. Stay tuned for updates and new builds!</p>
+      <div class="tech-stack">
+        <span class="tech">ᴛʙᴅ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p class="sec-label">// 04</p>
+  <h2 class="sec-title">ᴄᴏɴᴛᴀᴄᴛ</h2>
+  <div class="contact-wrap">
+    <div class="contact-bubble">
+      <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+      <div><div class="c-label">ᴇᴍᴀɪʟ</div><div class="c-val">sameer@email.com</div></div>
+    </div>
+    <div class="contact-bubble">
+      <div class="c-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+      <div><div class="c-label">ɢɪᴛʜᴜʙ</div><div class="c-val">github.com/sameer</div></div>
+    </div>
+    <div class="contact-bubble">
+      <div class="c-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+      <div><div class="c-label">ʟɪɴᴋᴇᴅɪɴ</div><div class="c-val">linkedin.com/in/sameer</div></div>
+    </div>
+    <div class="contact-bubble">
+      <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+      <div><div class="c-label">ʟᴏᴄᴀᴛɪᴏɴ</div><div class="c-val">India 🇮🇳</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>ᴄʀᴀꜰᴛᴇᴅ ᴡɪᴛʜ ❤️ ʙʏ ꜱᴀᴍᴇᴇʀ · 2025</footer>
