@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ᴘᴏʀᴛғᴏʟɪᴏ - sᴀᴍᴇᴇʀ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/1.119.0/tabler-icons.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --purple: #a78bfa;
+            --blue: #60a5fa;
+            --pink: #f472b6;
+            --glass: rgba(255,255,255,0.06);
+            --glass-border: rgba(255,255,255,0.12);
+        }
+        
+        body {
+            background: #050508;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            font-variant: small-caps;
+        }
+        
+        /* Background Orbs */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+        }
+        
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            background: #7c3aed;
+            top: -100px;
+            left: -100px;
+        }
+        
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: #1d4ed8;
+            top: 200px;
+            right: -80px;
+        }
+        
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: #be185d;
+            bottom: 0;
+            left: 30%;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5,5,8,0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .logo {
+            font-size: 17px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-variant: small-caps;
+        }
+        
+        .nav-pills {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .nav-pill {
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            color: #ccc;
+            backdrop-filter: blur(10px);
+            transition: all 0.25s;
+            letter-spacing: 0.3px;
+            font-variant: small-caps;
+        }
+        
+        .nav-pill:hover {
+            background: rgba(167,139,250,0.15);
+            border-color: rgba(167,139,250,0.4);
+            color: #a78bfa;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            border-radius: 50px;
+            background: rgba(167,139,250,0.1);
+            border: 1px solid rgba(167,139,250,0.25);
+            font-size: 12px;
+            color: #a78bfa;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            font-variant: small-caps;
+        }
+        
+        .dot-live {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(74,222,128,0.4);
+            }
+            50% {
+                opacity: 0.6;
+                box-shadow: 0 0 0 6px rgba(74,222,128,0);
+            }
+        }
+        
+        h1.name {
+            font-size: 62px;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -2px;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-variant: small-caps;
+        }
+        
+        h1.name span {
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 15px;
+            color: #64748b;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            font-variant: small-caps;
+        }
+        
+        .hero-desc {
+            font-size: 14px;
+            color: #475569;
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.9;
+            font-variant: small-caps;
+        }
+        
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+            font-variant: small-caps;
+        }
+        
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: rgba(255,255,255,0.08);
+        }
+        
+        .btn-glass:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-glass:hover {
+            transform: scale(1.04) translateY(-2px);
+        }
+        
+        .btn-glass:active {
+            transform: scale(0.97);
+        }
+        
+        .btn-primary-glass {
+            background: linear-gradient(135deg, rgba(124,58,237,0.8), rgba(59,130,246,0.8));
+            border: 1px solid rgba(167,139,250,0.4);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        
+        .btn-secondary-glass {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #cbd5e1;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+        
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .sec-label {
+            font-size: 11px;
+            color: #a78bfa;
+            letter-spacing: 3px;
+            margin-bottom: 0.4rem;
+            font-variant: small-caps;
+        }
+        
+        .sec-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 2rem;
+            font-variant: small-caps;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            margin: 1rem 0 3rem;
+        }
+        
+        /* About Section */
+        .about-glass {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        
+        .about-glass p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 2;
+            margin-bottom: 1rem;
+            font-variant: small-caps;
+        }
+        
+        .about-glass p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: #a78bfa;
+            font-weight: 500;
+            font-variant: small-caps;
+        }
+        
+        /* Skills Section */
+        .skills-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .skill-bubble {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            cursor: default;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        
+        .skill-bubble:hover {
+            transform: scale(1.06) translateY(-4px);
+            border-color: rgba(167,139,250,0.4);
+            background: rgba(167,139,250,0.1);
+            box-shadow: 0 12px 40px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .skill-bubble i {
+            font-size: 24px;
+            color: #a78bfa;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .skill-name {
+            font-size: 12px;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-variant: small-caps;
+        }
+        
+        .skill-bar {
+            width: 70%;
+            height: 3px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 2px;
+            margin: 6px auto 0;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #7c3aed, #60a5fa);
+        }
+        
+        /* Projects Section */
+        .projects-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        
+        .project-bubble {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-bubble::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        }
+        
+        .project-bubble:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(167,139,250,0.35);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(124,58,237,0.12), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .proj-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(59,130,246,0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(167,139,250,0.2);
+        }
+        
+        .proj-icon i {
+            font-size: 20px;
+            color: #a78bfa;
+        }
+        
+        .proj-tag {
+            font-size: 10px;
+            color: #64748b;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            font-variant: small-caps;
+        }
+        
+        .proj-title {
+            font-size: 15px;
+            color: #f1f5f9;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-variant: small-caps;
+        }
+        
+        .proj-desc {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.8;
+            font-variant: small-caps;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 1rem;
+        }
+        
+        .tech {
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            background: rgba(167,139,250,0.1);
+            border: 1px solid rgba(167,139,250,0.2);
+            color: #a78bfa;
+            font-variant: small-caps;
+        }
+        
+        /* Contact Section */
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+        
+        .contact-bubble {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+            cursor: pointer;
+        }
+        
+        .contact-bubble:hover {
+            transform: scale(1.03) translateY(-3px);
+            border-color: rgba(167,139,250,0.35);
+            background: rgba(167,139,250,0.08);
+            box-shadow: 0 12px 40px rgba(124,58,237,0.15);
+        }
+        
+        .contact-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(59,130,246,0.25));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(167,139,250,0.2);
+        }
+        
+        .contact-icon i {
+            font-size: 18px;
+            color: #a78bfa;
+        }
+        
+        .contact-label {
+            font-size: 10px;
+            color: #475569;
+            letter-spacing: 1px;
+            font-variant: small-caps;
+        }
+        
+        .contact-val {
+            font-size: 12px;
+            color: #cbd5e1;
+            margin-top: 2px;
+            font-variant: small-caps;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 11px;
+            color: #1e293b;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            font-variant: small-caps;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1.name {
+                font-size: 42px;
+            }
+            
+            .nav-pills {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            
+            .nav-pill {
+                padding: 5px 12px;
+                font-size: 11px;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <nav>
+        <div class="logo">⟨ sᴀᴍᴇᴇʀ ⟩</div>
+        <div class="nav-pills">
+            <button class="nav-pill">ᴀʙᴏᴜᴛ</button>
+            <button class="nav-pill">sᴋɪʟʟs</button>
+            <button class="nav-pill">ᴘʀᴏᴊᴇᴄᴛs</button>
+            <button class="nav-pill">ᴄᴏɴᴛᴀᴄᴛ</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="badge"><span class="dot-live"></span>ᴏᴘᴇɴ ᴛᴏ ᴏᴘᴘᴏʀᴛᴜɴɪᴛɪᴇs</div>
+        <h1 class="name">ʜɪ, ɪ'ᴍ <span>sᴀᴍᴇᴇʀ</span></h1>
+        <p class="tagline">ᴀɪ ᴅᴇᴠᴇʟᴏᴘᴇʀ · sᴛᴜᴅᴇɴᴛ · ʙᴜɪʟᴅᴇʀ</p>
+        <p class="hero-desc">ᴄʟᴀss 12 sᴛᴜᴅᴇɴᴛ ʙᴜɪʟᴅɪɴɢ ᴛʜᴇ ғᴜᴛᴜʀᴇ ᴡɪᴛʜ ᴘʏᴛʜᴏɴ, ʟʟᴍs & ɢᴇɴᴇʀᴀᴛɪᴠᴇ ᴀɪ.</p>
+        <div class="btn-group">
+            <button class="btn-glass btn-primary-glass"><i class="ti ti-sparkles"></i>ᴠɪᴇᴡ ᴘʀᴏᴊᴇᴄᴛs</button>
+            <button class="btn-glass btn-secondary-glass"><i class="ti ti-send"></i>ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ</button>
+            <button class="btn-glass btn-secondary-glass"><i class="ti ti-download"></i>ʀᴇsᴜᴍᴇ</button>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <section>
+        <p class="sec-label">// 01</p>
+        <h2 class="sec-title">ᴀʙᴏᴜᴛ ᴍᴇ</h2>
+        <div class="about-glass">
+            <p>ɪ'ᴍ ᴀ <span class="highlight">ᴄʟᴀss 12 sᴛᴜᴅᴇɴᴛ</span> ғʀᴏᴍ ɪɴᴅɪᴀ ᴘᴀssɪᴏɴᴀᴛᴇ ᴀʙᴏᴜᴛ ᴀɪ. ɪ sᴛᴀʀᴛᴇᴅ ᴡɪᴛʜ <span class="highlight">ᴘʏᴛʜᴏɴ</span> ᴀɴᴅ qᴜɪᴄᴋʟʏ ᴅɪᴠᴇᴅ ɪɴᴛᴏ <span class="highlight">ʟʟᴍs</span> & <span class="highlight">ɢᴇɴ ᴀɪ</span>.</p>
+            <p>ᴀɪ ɪs ᴏᴜʀ ғᴜᴛᴜʀᴇ. ɪ'ᴍ ᴄᴏɴsᴛᴀɴᴛʟʏ ʙᴜɪʟᴅɪɴɢ, ʟᴇᴀʀɴɪɴɢ, ᴀɴᴅ ᴘᴜsʜɪɴɢ ᴍʏ ʟɪᴍɪᴛs ᴇᴠᴇʀʏ sɪɴɢʟᴇ ᴅᴀʏ.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+        <p class="sec-label">// 02</p>
+        <h2 class="sec-title">sᴋɪʟʟs</h2>
+        <div class="skills-wrap">
+            <div class="skill-bubble">
+                <i class="ti ti-brand-python"></i>
+                <div class="skill-name">ᴘʏᴛʜᴏɴ</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bubble">
+                <i class="ti ti-brain"></i>
+                <div class="skill-name">ʟʟᴍs</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+            </div>
+            <div class="skill-bubble">
+                <i class="ti ti-sparkles"></i>
+                <div class="skill-name">ɢᴇɴ ᴀɪ</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+            </div>
+            <div class="skill-bubble">
+                <i class="ti ti-message-chatbot"></i>
+                <div class="skill-name">ᴘʀᴏᴍᴘᴛ ᴇɴɢ.</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill-bubble">
+                <i class="ti ti-robot"></i>
+                <div class="skill-name">ᴀɪ ᴀᴘɪs</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+            </div>
+            <div class="skill-bubble">
+                <i class="ti ti-git-branch"></i>
+                <div class="skill-name">ɢɪᴛ</div>
+                <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+        <p class="sec-label">// 03</p>
+        <h2 class="sec-title">ᴘʀᴏᴊᴇᴄᴛs</h2>
+        <div class="projects-wrap">
+            <div class="project-bubble">
+                <div class="proj-icon"><i class="ti ti-message-chatbot"></i></div>
+                <p class="proj-tag">ʟʟᴍ · ᴄʜᴀᴛʙᴏᴛ</p>
+                <p class="proj-title">ᴄᴜsᴛᴏᴍ ᴀɪ ᴀssɪsᴛᴀɴᴛ</p>
+                <p class="proj-desc">ᴄᴏɴᴠᴇʀsᴀᴛɪᴏɴᴀʟ ᴀɪ ʙᴜɪʟᴛ ᴡɪᴛʜ ᴘʏᴛʜᴏɴ ᴀɴᴅ ʟʟᴍ ᴀᴘɪs.</p>
+                <div class="tech-stack">
+                    <span class="tech">ᴘʏᴛʜᴏɴ</span>
+                    <span class="tech">ʟʟᴍ</span>
+                    <span class="tech">ᴀᴘɪ</span>
+                </div>
+            </div>
+            <div class="project-bubble">
+                <div class="proj-icon"><i class="ti ti-wand"></i></div>
+                <p class="proj-tag">ɢᴇɴ ᴀɪ · ᴄᴏɴᴛᴇɴᴛ</p>
+                <p class="proj-title">ᴀɪ ᴄᴏɴᴛᴇɴᴛ ɢᴇɴᴇʀᴀᴛᴏʀ</p>
+                <p class="proj-desc">ɢᴇɴᴇʀᴀᴛᴇs ᴄʀᴇᴀᴛɪᴠᴇ ᴛᴇxᴛ ᴀɴᴅ ɪᴅᴇᴀs ᴜsɪɴɢ ᴀɪ.</p>
+                <div class="tech-stack">
+                    <span class="tech">ɢᴇɴ ᴀɪ</span>
+                    <span class="tech">ᴘʏᴛʜᴏɴ</span>
+                </div>
+            </div>
+            <div class="project-bubble">
+                <div class="proj-icon"><i class="ti ti-plus"></i></div>
+                <p class="proj-tag">ᴄᴏᴍɪɴɢ sᴏᴏɴ</p>
+                <p class="proj-title">ʏᴏᴜʀ ɴᴇxᴛ ᴘʀᴏᴊᴇᴄᴛ</p>
+                <p class="proj-desc">ᴍᴏʀᴇ ᴇxᴄɪᴛɪɴɢ ᴀɪ ᴘʀᴏᴊᴇᴄᴛs ᴄᴏᴍɪɴɢ!</p>
+                <div class="tech-stack">
+                    <span class="tech">ᴛʙᴅ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+        <p class="sec-label">// 04</p>
+        <h2 class="sec-title">ᴄᴏɴᴛᴀᴄᴛ</h2>
+        <div class="contact-wrap">
+            <div class="contact-bubble">
+                <div class="contact-icon"><i class="ti ti-mail"></i></div>
+                <div>
+                    <div class="contact-label">ᴇᴍᴀɪʟ</div>
+                    <div class="contact-val">sᴀᴍᴇᴇʀ@ᴇᴍᴀɪʟ.ᴄᴏᴍ</div>
+                </div>
+            </div>
+            <div class="contact-bubble">
+                <div class="contact-icon"><i class="ti ti-brand-github"></i></div>
+                <div>
+                    <div class="contact-label">ɢɪᴛʜᴜʙ</div>
+                    <div class="contact-val">ɢɪᴛʜᴜʙ.ᴄᴏᴍ/sᴀᴍᴇᴇʀ</div>
+                </div>
+            </div>
+            <div class="contact-bubble">
+                <div class="contact-icon"><i class="ti ti-brand-linkedin"></i></div>
+                <div>
+                    <div class="contact-label">ʟɪɴᴋᴇᴅɪɴ</div>
+                    <div class="contact-val">ʟɪɴᴋᴇᴅɪɴ.ᴄᴏᴍ/ɪɴ/sᴀᴍᴇᴇʀ</div>
+                </div>
+            </div>
+            <div class="contact-bubble">
+                <div class="contact-icon"><i class="ti ti-map-pin"></i></div>
+                <div>
+                    <div class="contact-label">ʟᴏᴄᴀᴛɪᴏɴ</div>
+                    <div class="contact-val">ɪɴᴅɪᴀ 🇮🇳</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>ᴄʀᴀғᴛᴇᴅ ᴡɪᴛʜ ❤️ ʙʏ sᴀᴍᴇᴇʀ · 2025</footer>
+</body>
+</html>
